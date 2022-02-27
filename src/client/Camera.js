@@ -16,6 +16,8 @@ class Camera {
             this.near,
             this.drawDistance
         )
+
+        this.positionSet(0, 0, 25)
     }
 
     /**
