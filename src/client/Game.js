@@ -16,12 +16,20 @@ class Game {
         this.scene = new THREE.Scene()
 
         const geometry = new THREE.BoxGeometry(1, 1, 1)
-        const material = new THREE.MeshBasicMaterial({color: 0x44aa88});
 
-        this.cube = new THREE.Mesh(geometry, material);
-        this.scene.add(this.cube);
+        this.cubes = [
+            this.makeInstance(geometry, 0x44aa88, 0),
+            this.makeInstance(geometry, 0x8844aa, -2),
+            this.makeInstance(geometry, 0xaa8844, 2)
+        ]
 
-        this.renderer.render(this.scene, this.camera);
+        this.renderer.render(this.scene, this.camera)
+
+        const color = 0xFFFFFF
+        const intensity = 1
+        const light = new THREE.DirectionalLight(color, intensity)
+        light.position.set(-1, 2, 4)
+        this.scene.add(light)
 
         requestAnimationFrame(this.render)
     }
@@ -29,10 +37,25 @@ class Game {
     render = (time) => {
         time *= 0.001
         
-        this.cube.rotation.x = time
-        this.cube.rotation.y = time
+        this.cubes.forEach((cube, index) => {
+            const speed = 1 + index * .1
+            const rot = time * speed
+
+            cube.rotation.x = rot
+            cube.rotation.y = rot
+        })
 
         this.renderer.render(this.scene, this.camera)
         requestAnimationFrame(this.render)
+    }
+
+    makeInstance = (geometry, color, x) => {
+        const material = new THREE.MeshPhongMaterial({color})
+        const cube = new THREE.Mesh(geometry, material)
+        this.scene.add(cube)
+
+        cube.position.x = x
+
+        return cube
     }
 } export default Game
