@@ -1,4 +1,4 @@
-import { WebGLRenderer, Scene, BoxGeometry, Mesh, MeshPhongMaterial } from "/build/three.module.js"
+import { WebGLRenderer, BoxGeometry, Mesh, MeshPhongMaterial } from "/build/three.module.js"
 
 class Renderer {
     /**
@@ -46,14 +46,15 @@ class Renderer {
             cube.rotation.y = rot
         })
 
-        this._threeRenderer.render(scene, this.camera.threeCamera)
+        this._threeRenderer.render(scene._threeScene, this.camera._threeCamera)
+        
         requestAnimationFrame(this.loopRender.bind(scene, scene))
     }
 
     makeInstance = (scene, geometry, color, x) => {
         const material = new MeshPhongMaterial({color})
         const cube = new Mesh(geometry, material)
-        scene.add(cube)
+        scene._threeScene.add(cube)
 
         cube.position.x = x
 
