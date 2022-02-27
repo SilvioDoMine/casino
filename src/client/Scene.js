@@ -11,6 +11,16 @@ class Scene {
 
         this._threeScene.add(light)
     }
+
+    makeInstance = (geometry, color, x) => {
+        const material = new MeshPhongMaterial({color})
+        const cube = new Mesh(geometry, material)
+        this._threeScene.add(cube)
+
+        cube.position.x = x
+
+        return cube
+    }
 }
 
 export default Scene

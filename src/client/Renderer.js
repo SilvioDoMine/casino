@@ -27,9 +27,9 @@ class Renderer {
         const geometry = new BoxGeometry(1, 1, 1)
 
         this.cubes = [
-            this.makeInstance(scene, geometry, 0x44aa88, 0),
-            this.makeInstance(scene, geometry, 0x8844aa, -2),
-            this.makeInstance(scene, geometry, 0xaa8844, 2)
+            scene.makeInstance(geometry, 0x44aa88, 0),
+            scene.makeInstance(geometry, 0x8844aa, -2),
+            scene.makeInstance(geometry, 0xaa8844, 2)
         ]
 
         requestAnimationFrame(this.loopRender.bind(scene, scene))
@@ -49,16 +49,6 @@ class Renderer {
         this._threeRenderer.render(scene._threeScene, this.camera._threeCamera)
         
         requestAnimationFrame(this.loopRender.bind(scene, scene))
-    }
-
-    makeInstance = (scene, geometry, color, x) => {
-        const material = new MeshPhongMaterial({color})
-        const cube = new Mesh(geometry, material)
-        scene._threeScene.add(cube)
-
-        cube.position.x = x
-
-        return cube
     }
 }
 
