@@ -1,17 +1,17 @@
 import * as THREE from '/build/three.module.js'
+import Camera from './Camera.js'
 
 class Game {
     constructor() {
         this.canvas = document.querySelector('#game-canvas')
-        this.renderer = new THREE.WebGLRenderer({canvas: this.canvas})
 
-        this.fov = 75
-        this.aspect = 300 / 150
-        this.near = 0.1
-        this.far = 5
-        this.camera = new THREE.PerspectiveCamera(this.fov, this.aspect, this.near, this.far)
+        this.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            canvas: this.canvas
+        })
 
-        this.camera.position.set(0, 0, 2)
+        this.camera = new Camera()
+        this.camera.positionSet(0, 0, 25)
 
         this.scene = new THREE.Scene()
 
@@ -23,7 +23,8 @@ class Game {
             this.makeInstance(geometry, 0xaa8844, 2)
         ]
 
-        this.renderer.render(this.scene, this.camera)
+        this.renderer.setSize(window.innerWidth, window.innerHeight)
+        this.renderer.render(this.scene, this.camera.threeCamera)
 
         const color = 0xFFFFFF
         const intensity = 1
@@ -45,7 +46,7 @@ class Game {
             cube.rotation.y = rot
         })
 
-        this.renderer.render(this.scene, this.camera)
+        this.renderer.render(this.scene, this.camera.threeCamera)
         requestAnimationFrame(this.render)
     }
 
