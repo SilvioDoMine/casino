@@ -22,28 +22,26 @@ class Cube extends Entity {
         }
 
         this.properties = {
-            name: "Lulz"
+            name: "Cubo"
         }
 
         this.init()
     }
 
     init() {
-        this.threeGeometry = new BoxGeometry(this.geometry.width, this.geometry.height, this.geometry.depth)
-        let color = 0x8844aa
-        this.threeMaterial = new MeshPhongMaterial({color})
-        this.threeCube = new Mesh(this.threeGeometry, this.threeMaterial)
-        this.threeCube.name = this.properties.name
-
-        this.threeCube.position.x = this.position.x
+        const color = 0x8844aa
+        const geometry = new BoxGeometry(this.geometry.width, this.geometry.height, this.geometry.depth)
+        const material = new MeshPhongMaterial({color})
+        this.threeEntity = new Mesh(geometry, material)
+        this.threeEntity.position.x = -2
     }
 
     render(time) {
         const speed = 1 + 1 * .1
         const rot = time * speed
 
-        this.threeCube.rotation.x = rot
-        this.threeCube.rotation.y = rot
+        this.threeEntity.rotation.x = rot
+        this.threeEntity.rotation.y = rot
     }
 }
 
