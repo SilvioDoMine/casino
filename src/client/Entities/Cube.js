@@ -2,9 +2,7 @@ import {BoxGeometry, Mesh, MeshPhongMaterial } from "/build/three.module.js"
 import Entity from "./Entity.js";
 
 class Cube extends Entity {
-    constructor() {
-        super()
-
+    init() {
         this.geometry = {
             width: 1,
             height: 1,
@@ -21,14 +19,6 @@ class Cube extends Entity {
             color: 0x44aa88
         }
 
-        this.properties = {
-            name: "Cubo"
-        }
-
-        this.init()
-    }
-
-    init() {
         const color = 0x8844aa
         const geometry = new BoxGeometry(this.geometry.width, this.geometry.height, this.geometry.depth)
         const material = new MeshPhongMaterial({color})

@@ -11,8 +11,19 @@ class Game {
         const camera = new Camera()
 
         const scene = new Scene()
-        scene.addEntity(new Light())
-        scene.addEntity(new Cube())
+
+        scene.addEntity(
+            new Light({
+                name: 'Luz Genérica',
+                intensity: 1
+            })
+        )
+
+        scene.addEntity(
+            new Cube({
+                name: 'Cubo Genérico'
+            })
+        )
 
         const renderer = new Renderer(camera, '#game-canvas')
         renderer.loopRender(scene)
