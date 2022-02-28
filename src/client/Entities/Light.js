@@ -1,5 +1,3 @@
-'use strict'
-
 import { DirectionalLight } from "/build/three.module.js"
 import Entity from "./Entity.js";
 
