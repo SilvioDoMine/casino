@@ -1,25 +1,33 @@
-import {Scene as ThreeScene, DirectionalLight, BoxGeometry, Mesh, MeshPhongMaterial } from "/build/three.module.js"
+import { Scene as ThreeScene } from "/build/three.module.js"
 
 class Scene {
     constructor() {
         this._threeScene = new ThreeScene()
+        this.entities = []
     }
 
-    addLight = (color, intensity, position) => {
-        const light = new DirectionalLight(color, intensity)
-        light.position.set(position.x, position.y, position.z)
+    addEntity(newEntity) {
+        let found = false
 
-        this._threeScene.add(light)
+        this.entities.forEach((entity) => {
+            if (entity.threeEntity.uuid == newEntity.threeEntity.uuid) {
+                found = true
+            }
+        })
+
+        if (! found) {
+            this.entities.push(newEntity)
+            this._threeScene.add(newEntity.threeEntity)
+        }
     }
 
-    makeInstance = (geometry, color, x) => {
-        const material = new MeshPhongMaterial({color})
-        const cube = new Mesh(geometry, material)
-        this._threeScene.add(cube)
-
-        cube.position.x = x
-
-        return cube
+    removeEntity(EntityToRemove) {
+        this.entities.forEach((entity, index) => {
+            if (EntityToRemove.uuid == entity.uuid) {
+                this._threeScene.remove(EntityToRemove.threeEntity)
+                this.entities.splice(index, 1)
+            }
+        })
     }
 }
 

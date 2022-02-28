@@ -1,3 +1,5 @@
+"use strict";
+
 import express from 'express'
 import path from 'path'
 
@@ -11,5 +13,5 @@ app.use('/jsm/', express.static(path.join(directory, 'node_modules/three/example
 app.use('/client', express.static(path.join(directory, 'src/client')))
 
 app.listen(port, () => {
-    console.log(`Server is running at localhost:${port}`)
+    console.log(`Server is running at localhost: ${port}`)
 })

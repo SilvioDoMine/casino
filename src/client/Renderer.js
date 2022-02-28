@@ -23,27 +23,17 @@ class Renderer {
         this._threeRenderer.setSize(sizeWidth, sizeHeight)
     }
 
-    startRender(scene) {
-        const geometry = new BoxGeometry(1, 1, 1)
-
-        this.cubes = [
-            scene.makeInstance(geometry, 0x44aa88, 0),
-            scene.makeInstance(geometry, 0x8844aa, -2),
-            scene.makeInstance(geometry, 0xaa8844, 2)
-        ]
-
-        requestAnimationFrame(this.loopRender.bind(scene, scene))
-    }
-
-    loopRender = (scene, time) => {
-        time *= 0.001
+    /**
+     * Loop de renderização. Renderiza TODOS os objetos da cena passada por parâmetro.
+     * 
+     * @param {*} scene 
+     * @param {*} time 
+     */
+    loopRender = (scene, time = 0) => {
+        const timeInSeconds = time * 0.001;
         
-        this.cubes.forEach((cube, index) => {
-            const speed = 1 + index * .1
-            const rot = time * speed
-
-            cube.rotation.x = rot
-            cube.rotation.y = rot
+        scene.entities.forEach((entity) => {
+            entity.render(timeInSeconds)
         })
 
         this._threeRenderer.render(scene._threeScene, this.camera._threeCamera)
