@@ -1,7 +1,16 @@
+
 # Slot Casino Scattlefold
-
 ## How to Build & Run
+### Prerequisites
+```bash
+# NodeJS
+v16.14.0^
+# NPM
 
+v8.3.1^
+```
+
+ ###  Commands
 ```bash
 # install dependencies
 $ npm install
