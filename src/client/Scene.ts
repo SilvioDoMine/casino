@@ -10,7 +10,7 @@ export class Scene {
         this.entities = []
     }
 
-    addEntity(newEntity: Entity) {
+    addEntity(newEntity: Entity): void {
         let found = false;
 
         this.entities.forEach((entity: Entity) => {
@@ -25,8 +25,8 @@ export class Scene {
         }
     }
 
-    removeEntity(EntityToRemove: Entity) {
-        this.entities.forEach((entity: Entity, index: number) => {
+    removeEntity(EntityToRemove: Entity): void {
+        this.entities.forEach((entity: Entity, index: number): void => {
             if (EntityToRemove.THREE.uuid == entity.THREE.uuid) {
                 this.THREE.remove(EntityToRemove.THREE);
                 this.entities.splice(index, 1);

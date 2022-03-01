@@ -16,9 +16,11 @@ export class Light extends Entity {
         this.position = new Vector3(-1, 2, 4);
         this.color = 0xFFFFFF;
         this.THREE = new DirectionalLight(this.color, this.intensity);
+        
+        this.init();
     }
 
-    init() {
+    init(): void {
         this.THREE.position.set(
             this.position.x,
             this.position.y,

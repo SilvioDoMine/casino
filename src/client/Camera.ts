@@ -29,13 +29,13 @@ export class Camera {
         this.init();
     }
 
-    private init() {
+    private init(): void {
         this.positionSet(
             new Vector3(0, 0, 25)
         );
     }
 
-    positionSet(position: Vector3) {
+    positionSet(position: Vector3): void {
         this.position = position;
         this.THREE.position.set(position.x, position.y, position.z);
     }

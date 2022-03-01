@@ -5,7 +5,7 @@ export abstract class Entity
 
     abstract init(): void;
 
-    render(time: number) {
+    render(time: number): void {
         //
     }
 }

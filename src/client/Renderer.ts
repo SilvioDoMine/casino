@@ -34,10 +34,11 @@ class Renderer {
     /**
      * Loop de renderização. Renderiza TODOS os objetos da cena passada por parâmetro.
      * 
-     * @param {*} scene 
-     * @param {*} time 
+     * @param   {Scene}     scene 
+     * @param   {number}    [time=0]
+     * @returns {void}
      */
-    loopRender = (scene: Scene, time: number = 0) => {
+    loopRender = (scene: Scene, time: number = 0): void => {
         const timeInSeconds = time * 0.001;
         
         scene.entities.forEach((entity: Entity) => {
