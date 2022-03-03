@@ -1,5 +1,5 @@
 import { ColorRepresentation, DirectionalLight, Vector3 } from "three"
-import { Entity } from "./Entity.js";
+import { Entity } from "./Entity";
 
 export class Light extends Entity {
     name: string;

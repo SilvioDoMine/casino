@@ -1,5 +1,5 @@
 import { BoxGeometry, ColorRepresentation, Mesh, MeshPhongMaterial, Vector3 } from "three"
-import { Entity } from "./Entity.js";
+import { Entity } from "./Entity";
 
 export class Cube implements Entity {
     name: string;
