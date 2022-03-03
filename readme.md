@@ -10,16 +10,14 @@ v16.14.0^
 v8.3.1^
 ```
 
- ###  Commands
+ ####  Development
 ```bash
-# install dependencies
+# Install dependencies and open dev server
 $ npm install
+$ npm run dev
 
-# Transpile all typescript to javascript
-$ npm run build
-
-# Start server with the transpiled files.
-$ npm rum start
+# Transpile & create bundle into public folder
+$ npm rum build
 ```
 
 ## How to contribute in development
