@@ -1,5 +1,5 @@
 
-# Slot Casino Scattlefold
+# Slot Casino Boilerplate
 ## How to Build & Run
 ### Prerequisites
 ```bash
