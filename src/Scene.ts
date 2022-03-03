@@ -1,5 +1,5 @@
 import { Scene as ThreeScene } from "three"
-import { Entity } from "./Entities/Entity.js"
+import { Entity } from "./Entities/Entity"
 
 export class Scene {
     THREE: ThreeScene;

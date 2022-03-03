@@ -1,10 +1,10 @@
-import { Camera } from './Camera.js';
-import { Scene } from './Scene.js';
-import { Light } from './Entities/Light.js';
-import { Cube } from './Entities/Cube.js';
-import Renderer from './Renderer.js';
+import { Camera } from './Camera';
+import { Scene } from './Scene';
+import { Light } from './Entities/Light';
+import { Cube } from './Entities/Cube';
+import Renderer from './Renderer';
 
-class Game {
+export class Game {
     canvas: HTMLElement;
 
     constructor () {
@@ -26,5 +26,3 @@ class Game {
         renderer.loopRender(scene);
     }
 }
-
-new Game()
